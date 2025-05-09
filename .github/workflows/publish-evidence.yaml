@@ -1,0 +1,20 @@
+name: Test without cbp integration - Evidence
+
+on:
+  push:
+    branches: test-publish-evidence
+  workflow_dispatch:
+  
+jobs:
+  publish-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run My Custom Go Action
+        uses: cloudbees-io-gha/publish-evidence-item@test1
+        id: go-action
+        with:
+          cloudbees-url: "https://api.saas-preprod.beescloud.com"
+          cloudbees-pat: ${{ secrets.CBP_PAT }}
+          content: "test content"
