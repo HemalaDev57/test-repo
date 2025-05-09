@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  publish-artifact:
+  publish-evidence:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
