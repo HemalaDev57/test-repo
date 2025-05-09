@@ -1,6 +1,8 @@
 name: Test without cbp integration - Evidence
 
 on:
+  push:
+    branches: test-publish-evidence
   workflow_dispatch:
   
 jobs:
@@ -10,13 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run My Custom Go Action
-        uses: cloudbees-io-gha/register-build-artifact@CBP-13628
+        uses: cloudbees-io-gha/publish-evidence-item@CBP-13628
         id: go-action
         with:
-          name: "gha-artifact-test-003"
-          version: 1.0.0
-          url: "docker.io/calculi-corp/gha-action/gha-artifact-test-003:latest"
-          digest: "sha256:a1a123ee08af5e43a7fea6c4cf9c25ccf269ee113168c19722f87876677c5cb5"
-          type: "docker"
           cloudbees-url: "https://api.saas-preprod.beescloud.com"
           cloudbees-pat: ${{ secrets.CBP_PAT }}
+          content: "test content"
