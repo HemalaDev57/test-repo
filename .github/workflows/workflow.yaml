@@ -1,4 +1,4 @@
-name: Test without cbp integration
+name: Test without cbp integration - TestResult
 
 on:
   workflow_dispatch:
