@@ -1,0 +1,22 @@
+name: Test without cbp integration - RunCBPWorkflow
+
+on:
+  push:
+    branches: test-run-cbp-workflow
+  workflow_dispatch:
+  
+jobs:
+  trigger-cbp-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run My Custom Go Action
+        uses: cloudbees-io-gha/run-cloudbees-workflow@CBP-13628
+        id: go-action
+        with:
+          cloudbees-url: "https://api.saas-preprod.beescloud.com"
+          cloudbees-pat: ${{ secrets.CBP_PAT }}
+          component-id: "daf6328c-a799-4d3a-92c7-c32c1c6e07eb"
+          branch-name: "master"
+          workflow-file-name: "cbp-build-deploy-artifact.yaml"
