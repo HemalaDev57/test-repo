@@ -1,6 +1,8 @@
 name: Test without cbp integration - RunCBPWorkflow
 
 on:
+  push:
+    branches: test-run-cbp-workflow
   workflow_dispatch:
   
 jobs:
@@ -10,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Run My Custom Go Action
-        uses: cloudbees-io-gha/register-build-artifact@CBP-13628
+        uses: cloudbees-io-gha/run-cloudbees-workflow@CBP-13628
         id: go-action
         with:
           cloudbees-url: "https://api.saas-preprod.beescloud.com"
