@@ -1,6 +1,8 @@
 name: Test without cbp integration - TestResult
 
 on:
+  push:
+    branches: test-publish-test-result
   workflow_dispatch:
   
 jobs:
